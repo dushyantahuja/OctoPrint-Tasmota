@@ -1,3 +1,5 @@
+Forking to hardcode settings - to test if that works
+
 # OctoPrint-Tasmota
 
 This plugin is to control ITead Sonoff devices that have been flashed with [Sonoff-Tasmota](https://github.com/arendst/Sonoff-Tasmota) via web calls.
