@@ -84,9 +84,9 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 	##~~ SimpleApiPlugin mixin
 	
 	def turn_on(self, plugip, plugidx, username="admin", password=""):
-		self._tasmota_logger.debug("Turning on %s index %s." % (plugip, plugidx))
+		self._tasmota_logger.debug("DA: Turning on %s index %s." % (plugip, plugidx))
 		try:
-			webresponse = urllib2.urlopen("http://" + plugip + "/cm?user=" + username + "&password=" + password + "&cmnd=Power" + str(plugidx) + "%20on").read()
+			webresponse = urllib2.urlopen("http://192.168.1.225/cm?user=admin&password=1234&cmnd=Power1%20on").read()
 			response = json.loads(webresponse.split()[2])
 			chk = response["POWER"]
 		except:			
@@ -105,9 +105,9 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 			self._plugin_manager.send_plugin_message(self._identifier, dict(currentState="unknown",ip=plugip,idx=plugidx))
 	
 	def turn_off(self, plugip, plugidx, username="admin", password=""):
-		self._tasmota_logger.debug("Turning off %s index %s." % (plugip, plugidx))
+		self._tasmota_logger.debug("DA: Turning off %s index %s." % (plugip, plugidx))
 		try:
-			webresponse = urllib2.urlopen("http://" + plugip + "/cm?user=" + username + "&password=" + password + "&cmnd=Power" + str(plugidx) + "%20off").read()
+			webresponse = urllib2.urlopen("http://192.168.1.225/cm?user=admin&password=1234&cmnd=Power1%20off").read()
 			response = json.loads(webresponse.split()[2])
 			chk = response["POWER"]
 		except:
@@ -126,10 +126,10 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 			self._plugin_manager.send_plugin_message(self._identifier, dict(currentState="unknown",ip=plugip,idx=plugidx))
 		
 	def check_status(self, plugip, plugidx, username="admin", password=""):
-		self._tasmota_logger.debug("Checking status of %s index %s." % (plugip, plugidx))
+		self._tasmota_logger.debug("DA: Checking status of %s index %s." % (plugip, plugidx))
 		if plugip != "":
 			try:
-				webresponse = urllib2.urlopen("http://" + plugip + "/cm?user=" + username + "&password=" + password + "&cmnd=Power" + str(plugidx)).read()
+				webresponse = urllib2.urlopen("http://192.168.1.225/cm?user=admin&password=1234&cmnd=Power1").read()
 				self._tasmota_logger.debug("%s index %s response: %s" % (plugip, plugidx, webresponse))
 				response = json.loads(webresponse.split()[2])
 				chk = response["POWER"]
