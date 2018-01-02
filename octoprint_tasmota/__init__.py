@@ -89,10 +89,10 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 			webresponse = urllib2.urlopen("http://192.168.1.225/cm?user=admin&password=1234&cmnd=Power1%20on").read()
 			response = json.loads(webresponse.split()[2])
 			chk = response["POWER"]
-		except:			
-			self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
-			response = "Unknown error turning on %s index %s." % (plugip, plugidx)
-			chk = "UNKNOWN"
+		##except:			
+		##	self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
+		##	response = "Unknown error turning on %s index %s." % (plugip, plugidx)
+		##	chk = "UNKNOWN"
 			
 		self._tasmota_logger.debug("Response: %s" % response)
 		
@@ -110,10 +110,10 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 			webresponse = urllib2.urlopen("http://192.168.1.225/cm?user=admin&password=1234&cmnd=Power1%20off").read()
 			response = json.loads(webresponse.split()[2])
 			chk = response["POWER"]
-		except:
-			self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
-			response = "Unknown error turning off %s index %s." % (plugip, plugidx)
-			chk = "UNKNOWN"
+		##except:
+		##	self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
+		##	response = "Unknown error turning off %s index %s." % (plugip, plugidx)
+		##	chk = "UNKNOWN"
 			
 		self._tasmota_logger.debug("Response: %s" % response)
 		
@@ -133,10 +133,10 @@ class tasmotaPlugin(octoprint.plugin.SettingsPlugin,
 				self._tasmota_logger.debug("%s index %s response: %s" % (plugip, plugidx, webresponse))
 				response = json.loads(webresponse.split()[2])
 				chk = response["POWER"]
-			except:
-				self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
-				response = "unknown error with %s." % plugip
-				chk = "UNKNOWN"
+		##	except:
+		##		self._tasmota_logger.error('Invalid ip or unknown error connecting to %s.' % plugip, exc_info=True)
+		##		response = "unknown error with %s." % plugip
+		##		chk = "UNKNOWN"
 				
 			self._tasmota_logger.debug("%s index %s is %s" % (plugip, plugidx, chk))
 			
